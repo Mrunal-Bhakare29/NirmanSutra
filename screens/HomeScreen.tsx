@@ -1,0 +1,176 @@
+import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
+import IconFA from 'react-native-vector-icons/FontAwesome5';
+import IconIon from 'react-native-vector-icons/Ionicons';
+import IconMat from 'react-native-vector-icons/MaterialIcons';
+import { useNavigation } from '@react-navigation/native';
+import { useTheme } from '../ThemeContext'; // ✅ import global theme hook
+
+const HomeScreen = () => {
+  const navigation = useNavigation();
+  const { theme } = useTheme(); // ✅ use context
+
+  return (
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
+      {/* Logo Image */}
+      <Image
+        source={require('../assets/images/nirmansutra-logo.jpg')}
+        style={styles.logoImage}
+      />
+      <Text style={[styles.logo, { color: theme.text }]}>NirmanSutra</Text>
+      <Text style={[styles.welcome, { color: theme.text }]}>
+        Welcome to NirmanSutra
+      </Text>
+
+      {/* Category Buttons Grid */}
+      <View style={styles.categoryGrid}>
+        <CategoryButton
+          icon={<IconMat name="map" size={35} color="#ffd666" />}
+          label="SSRRates"
+          onPress={() => navigation.navigate('SSRRates')}
+        />
+      
+        <CategoryButton
+          icon={<IconFA name="calculator" size={30} color="#ffd666" />}
+          label="Brandwise Rates"
+          onPress={() => navigation.navigate("BrandWiseMaterial")}
+        />
+        <CategoryButton
+          icon={<IconIon name="location-sharp" size={35} color="#ffd666" />}
+          label="Nearby Suppliers"
+          onPress={() => navigation.navigate('SearchSupplier')}
+        />
+        <CategoryButton
+          icon={<IconMat name="map" size={35} color="#ffd666" />}
+          label="State Wise SSR"
+          onPress={() => navigation.navigate('StateSSR')}
+        />
+        <CategoryButton
+          icon={<IconIon name="chatbubble-ellipses" size={35} color="#ffd666" />}
+          label="Chatbot"
+          onPress={() => navigation.navigate('ChatbotScreen')}
+        />
+
+      </View>
+
+      {/* Bottom Navigation */}
+      <View style={[styles.bottomNav, { backgroundColor: theme.card }]}>
+        {/* Home */}
+        <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <NavItem
+            label="Home"
+            icon={<IconIon name="home" size={25} color="#FBC02D" />}
+            active
+          />
+        </TouchableOpacity>
+
+
+        {/* Search (Middle) */}
+        <TouchableOpacity onPress={() => navigation.navigate('SearchMaterial')}>
+          <NavItem
+            label="Search"
+            icon={<IconIon name="search" size={25} color="white" />}
+          />
+        </TouchableOpacity>
+
+        {/* Profile */}
+        <TouchableOpacity onPress={() => navigation.navigate('UserProfile')}>
+          <NavItem
+            label="Profile"
+            icon={<IconIon name="person-outline" size={25} color="white" />}
+          />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+const CategoryButton = ({ icon, label, onPress }) => (
+  <TouchableOpacity style={styles.categoryButton} onPress={onPress}>
+    {icon}
+    <Text style={styles.categoryLabel}>{label}</Text>
+  </TouchableOpacity>
+);
+
+const NavItem = ({ label, icon, active }) => (
+  <View style={styles.navItem}>
+    {icon}
+    <Text style={[styles.navLabel, active && { color: '#ffd700' }]}>{label}</Text>
+  </View>
+);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 50,
+    paddingHorizontal: 20,
+    paddingBottom: 80,
+  },
+  logoImage: {
+    width: 80,
+    height: 80,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    marginBottom: 10,
+  },
+  logo: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  welcome: {
+    fontSize: 20,
+    marginVertical: 20,
+    textAlign: 'center',
+  },
+  categoryGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flex: 1,
+    marginTop: 25,
+  },
+  categoryButton: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 15,
+    backgroundColor: '#1a1a1a',
+    borderRadius: 12,
+    width: '47%',
+    height: 120,
+    marginBottom: 20,
+  },
+  categoryLabel: {
+    color: 'wheat',
+    fontSize: 20,
+    marginTop: 10,
+    textAlign: 'center',
+  },
+  bottomNav: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 70,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  navItem: {
+    alignItems: 'center',
+  },
+  navLabel: {
+    fontSize: 12,
+    marginTop: 2,
+    color: 'white',
+  },
+});
+
+export default HomeScreen;

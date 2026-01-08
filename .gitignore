@@ -1,0 +1,23 @@
+# Node
+node_modules/
+
+# Android build & native
+android/.gradle/
+android/build/
+android/app/build/
+android/.cxx/
+android/app/.cxx/
+
+# Native binaries
+*.so
+
+# APKs
+*.apk
+*.aab
+
+# Logs
+*.log
+
+# Secrets
+serviceAccountKey.json
+.env
