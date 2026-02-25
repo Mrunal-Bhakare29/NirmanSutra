@@ -204,12 +204,15 @@ const NearbySuppliersScreen = () => {
               )}
               <TouchableOpacity
                 style={styles.button}
-                onPress={() => setExpandedId(expandedId === item.id ? null : item.id)}
+                onPress={() =>
+                  navigation.navigate('SupplierDetails', {
+                    supplier: item,
+                  })
+                }
               >
-                <Text style={styles.buttonText}>
-                  {expandedId === item.id ? 'Hide Materials' : 'View More'}
-                </Text>
+                <Text style={styles.buttonText}>View More</Text>
               </TouchableOpacity>
+
             </View>
           )}
         />

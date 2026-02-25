@@ -15,7 +15,12 @@ import SearchMaterial from './screens/SearchMaterial';
 import ChatbotScreen from './screens/ChatbotScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
-
+import LabourCommunity from './screens/LabourCommunity';
+import ExcessMarketplaceScreen from './screens/ExcessMarketplaceScreen';
+import SupplierPanelScreen from './screens/SupplierPanelScreen.tsx';
+import SellMaterial from './screens/SellMaterial.tsx';
+import SupplierDetailsScreen from './screens/SupplierDetailsScreen.tsx';
+import MyListing from './screens/MyListing.tsx';
 export type RootStackParamList = {
   Home: undefined;
   Login: undefined;
@@ -53,6 +58,13 @@ const AppNavigation = () => {
       <Stack.Screen name="SSRRates" component={SSRRates} />
       <Stack.Screen name="SearchMaterial" component={SearchMaterial} />
       <Stack.Screen name="ChatbotScreen" component={ChatbotScreen} />
+      <Stack.Screen name="ExcessMarketplaceScreen" component={ExcessMarketplaceScreen} />
+      <Stack.Screen name="LabourCommunity" component={LabourCommunity} />
+    <Stack.Screen name="SupplierPanelScreen" component={SupplierPanelScreen} />
+    <Stack.Screen name="SellMaterial" component={SellMaterial} />
+    <Stack.Screen name="MyListing" component={MyListing} />
+    <Stack.Screen name="SupplierDetails" component={SupplierDetailsScreen}
+/>
 
     </Stack.Navigator>
   );
